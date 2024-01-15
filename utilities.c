@@ -25,3 +25,24 @@ char *hexDecode(char *hexInput) {
 
   return binaryInput;
 }
+
+char *hexEncode(char *binaryInput) {
+  // 1 char is 8 bits. hexInput represents 4 bits of information per char. So we
+  // only need half that length when it's unpacked
+  int binaryLength = strlen(binaryInput);
+  int hexLength = binaryLength * 2;
+
+  char *hexInput = malloc((hexLength + 1) * sizeof(char));
+  hexInput[hexLength] = 0x00;
+  int i;
+  for (i = 0; i < binaryLength; i++) {
+    int j = binaryInput[i] >> 4;
+    int k = binaryInput[i] & 0x0f;
+    // If j >= 10, then it's actually a letter, and we need to shift up the
+    // ASCII table to the start of the lowercase characters
+    hexInput[(i * 2)] = j < 10 ? j + '0' : ((j - 10) + 'a');
+    hexInput[(i * 2) + 1] = k < 10 ? k + '0' : ((k - 10) + 'a');
+  }
+
+  return hexInput;
+}
