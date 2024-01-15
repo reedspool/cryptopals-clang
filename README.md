@@ -7,5 +7,5 @@ This whole project is spoilers for Cryptopals, so look away if you are intereste
 Build and run
 
 ```sh
-gcc -std=c18 -Wall -Wextra -Wpedantic -Werror -o tmp.out set-1-challenge-1.c && ./tmp.out
+gcc -std=c18 -Wall -Wextra -Wpedantic -Werror -o tmp.out set-1-challenge-1.c utilities.c && ./tmp.out
 ```
